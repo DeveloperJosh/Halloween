@@ -26,6 +26,7 @@ class Events(commands.Cog, description="Events"):
           channel = self.bot.get_channel(event_channel)
           embed = Embed(title=f"{event}", description=f"{event} event is starting soon", color=0xFF0000)
           msg = await channel.send(embed=embed)
+          await ctx.reply("Event started")
           db.collection.insert_one({"_id": msg.id, "_status": "on", "start":  time.time()})
 
         else:

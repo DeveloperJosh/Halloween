@@ -1,2 +1,2 @@
 event = "Halloween"
-event_channel = 903090469368647740
+event_channel = 903086928285560862

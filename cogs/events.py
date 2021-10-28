@@ -43,8 +43,9 @@ class Events(commands.Cog, description="Events"):
         else:
             e = db.collection.find_one({"_status": "on"})
 
-            embed = Embed(title=f"{event}", description=f"{event} event has ended!", color=0xFF0000)  
-            msg = await ctx.fetch_message(e['_id'])
+            embed = Embed(title=f"{event}", description=f"{event} event has ended!", color=0xFF0000)
+            channel = self.bot.get_channel(event_channel)  
+            msg = await channel.fetch_message(e['_id'])
             await msg.edit(embed=embed)
             await ctx.send(f"{event} event has ended!")     
             db.collection.delete_one({"_status": "on"})
